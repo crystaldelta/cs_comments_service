@@ -36,11 +36,12 @@ GEM
     bson (3.2.6)
     bson_ext (1.5.1)
     builder (3.2.3)
-    codecov (0.1.10)
+    codecov (0.2.6)
+      colorize
       json
       simplecov
-      url
     coderay (1.1.1)
+    colorize (0.8.1)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     dalli (2.7.6)
@@ -200,7 +201,6 @@ GEM
     unicorn (5.3.1)
       kgio (~> 2.6)
       raindrops (~> 0.7)
-    url (0.3.2)
     webmock (3.0.1)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
