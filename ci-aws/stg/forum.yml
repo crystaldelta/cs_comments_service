@@ -1,0 +1,29 @@
+CD_EDX_MONGO_HOSTS:
+  - xenops-stg-shard-00-00-fnkuw.mongodb.net
+  - xenops-stg-shard-00-01-fnkuw.mongodb.net
+  - xenops-stg-shard-00-02-fnkuw.mongodb.net
+
+CD_EDX_FORUM_HOSTNAME: "{{ CD_EDX_ENV }}-forum-openedx-api.{{ CD_EDX_DOMAIN }}"
+
+FORUM_NGINX_HOSTNAME: "{{ CD_EDX_FORUM_HOSTNAME }}"
+FORUM_NGINX_PORT: "80"
+
+FORUM_MONGO_USER: "cs_comments_service"
+FORUM_REPLICA_SET: "xenops-stg-shard-0"
+FORUM_MONGO_AUTH_SOURCE: "admin"
+# this is in secrets.yml
+#FORUM_MONGO_PASSWORD: "password"
+FORUM_MONGO_HOSTS: "{{ CD_EDX_MONGO_HOSTS }}"
+#FORUM_MONGO_TAGS: !!null
+FORUM_MONGO_PORT: 27017
+FORUM_MONGO_DATABASE: "cs_comments_service"
+FORUM_MONGO_USE_SSL: True
+# TODO pretty sure the query string params are ignored....
+FORUM_MONGO_URL: "mongodb://{{ FORUM_MONGO_USER }}:{{ FORUM_MONGO_PASSWORD }}@{%- for host in FORUM_MONGO_HOSTS -%}{{ host }}:{{ FORUM_MONGO_PORT }}{%- if not loop.last -%},{%- endif -%}{%- endfor -%}/{{ FORUM_MONGO_DATABASE }}?ssl=true&replicaSet={{ FORUM_REPLICA_SET }}&authSource={{FORUM_MONGO_AUTH_SOURCE}}"
+
+# Its configured in secrets.yml
+#FORUM_API_KEY: "password"
+FORUM_ELASTICSEARCH_HOST: "{{ CD_EDX_ELASTICSEARCH_HOSTNAME }}"
+FORUM_ELASTICSEARCH_PORT: "{{ CD_EDX_ELASTICSEARCH_PORT }}"
+FORUM_ELASTICSEARCH_PROTOCOL: "{{ CD_EDX_ELASTICSEARCH_PROTOCOL }}"
+FORUM_ELASTICSEARCH_URL: "{{ FORUM_ELASTICSEARCH_PROTOCOL }}://{{ FORUM_ELASTICSEARCH_HOST }}:{{ FORUM_ELASTICSEARCH_PORT }}"
