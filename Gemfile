@@ -16,21 +16,24 @@ gem 'sinatra-param', '~> 1.4'
 
 gem 'yajl-ruby', '~> 1.3.1'
 
-gem 'activemodel', '~> 4.2.8'
+gem 'activemodel'
+gem 'protected_attributes_continued'
 
-gem 'mongoid', '~> 5.0.0'
-gem 'bson', '~> 3.1'
+gem 'mongoid'
+gem 'bson'
 gem 'bson_ext'
-gem 'protected_attributes'
 
 gem 'delayed_job'
 gem 'delayed_job_mongoid'
 
 gem "enumerize"
-gem 'mongoid-tree', :git => 'https://github.com/macdiesel/mongoid-tree'
-gem 'rs_voteable_mongo', :git => 'https://github.com/navneet35371/voteable_mongo.git'
+gem 'mongoid-tree', :git => 'https://github.com/edx/mongoid-tree'
+gem 'rs_voteable_mongo', '~> 1.3'
 gem 'mongoid_magic_counter_cache'
 
+# Before updating will_paginate version, we need to make sure that property 'total_entries'
+# exists otherwise use updated property name to fetch total collection count in lib/helpers.rb's
+# function 'handle_threads_query'.
 gem 'will_paginate_mongoid', "~>2.0"
 gem 'rdiscount'
 gem 'nokogiri', "~>1.8.1"
